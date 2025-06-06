@@ -19,6 +19,7 @@ public class Menu
                         "Manage Categories",
                         "Manage Flashcards",
                         "Study",
+                        "Reports",
                         "Quit"
                     ));
             switch (userChoice)
@@ -33,6 +34,7 @@ public class Menu
                     break;
                 case "Study":
                     AnsiConsole.Clear();
+                    StudySessionsMenu();
                     break;
                 case "Quit":
                     AnsiConsole.WriteLine("Goodbye");
@@ -132,6 +134,53 @@ public class Menu
                     AnsiConsole.WriteLine("Invalid choice. Please choose one of the above");
                     break;
             }
+        }
+    }
+
+    internal void StudySessionsMenu()
+    {
+        var isMenuRunning = true;
+        while (isMenuRunning)
+        {
+            var userChoice = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("What would you like to do?")
+                    .AddChoices(
+                        "Start Study Session",
+                        "Study Session History",
+                        "Return to Main Menu"));
+            switch (userChoice)
+            {
+                case "Start Study Session":
+                    AnsiConsole.Clear();
+                    StudySessionController.CreateStudySession();
+                    break;
+                case "Study Session History":
+                    AnsiConsole.Clear();
+                    StudySessionController.ViewStudyHistory();
+                    break;
+                case "Return to Main Menu":
+                    isMenuRunning = false;
+                    break;
+                default:
+                    AnsiConsole.WriteLine("Invalid choice. Please choose one of the above");
+                    break;
+            }
+        }
+    }
+
+    internal void ReportsMenu()
+    {
+        var isMenuRunning = true;
+        while (isMenuRunning)
+        {
+            var userChoice = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("What would you like to do?")
+                    .AddChoices(
+                        "Report 1",
+                        "Report 2",
+                        "Report 3"));
         }
     }
 }

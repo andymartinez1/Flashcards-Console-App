@@ -8,16 +8,16 @@ public class CategoryController
 {
     internal static void AddCategory()
     {
-        Category category =  new Category();
+        Category category = new Category();
         DataConnection dataConnection = new DataConnection();
-    
+
         category.Name = AnsiConsole.Ask<string>("Insert Category Name:");
 
         while (string.IsNullOrWhiteSpace(category.Name))
         {
             category.Name = AnsiConsole.Ask<string>("Name cannot be empty. Insert Category Name:");
         }
-        
+
         dataConnection.InsertCategory(category);
     }
 
@@ -30,17 +30,17 @@ public class CategoryController
         {
             table.AddRow(category.Name);
         }
-        
+
         AnsiConsole.Write(table);
     }
 
     internal static void UpdateCategory()
     {
         Category category = new Category();
-        
+
         category.Id = ChooseCategory("Choose Category:");
         category.Name = AnsiConsole.Ask<string>("Insert Category Name:");
-        
+
         DataConnection dataConnection = new DataConnection();
         dataConnection.UpdateCategory(category);
     }
@@ -48,9 +48,9 @@ public class CategoryController
     internal static void DeleteCategory()
     {
         var id = ChooseCategory("Choose Category to Delete:");
-        
-        if(!AnsiConsole.Confirm("Are you sure you want to delete this category?")) return;
-        
+
+        if (!AnsiConsole.Confirm("Are you sure you want to delete this category?")) return;
+
         DataConnection dataConnection = new DataConnection();
         dataConnection.DeleteCategory(id);
     }
@@ -63,9 +63,8 @@ public class CategoryController
         var option = AnsiConsole.Prompt(new SelectionPrompt<string>()
             .Title("Please choose a category: ")
             .AddChoices(categoryArray));
-        var categoryId = categories.FirstOrDefault(c => c.Name == option).Id;
-        
-        return categoryId;;
+        var categoryId = categories.Single(c => c.Name == option).Id;
+
+        return categoryId;
     }
-    
 }

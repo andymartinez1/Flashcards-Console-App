@@ -14,17 +14,16 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Dapper" Version="2.1.66" />
-      <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0-preview1.25120.4" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0-preview.4.25258.110" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0-preview.4.25258.110" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0-preview.4.25258.110" />
-      <PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.10" />
+        <PackageReference Include="Dapper" Version="2.1.66"/>
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.0-preview1.25120.4"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0-preview.4.25258.110"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0-preview.4.25258.110"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0-preview.4.25258.110"/>
+        <PackageReference Include="Spectre.Console" Version="0.50.1-preview.0.10"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="docs\images\" />
-      <Folder Include="DTOs\" />
+        <Folder Include="docs\images\"/>
     </ItemGroup>
 
 </Project>
