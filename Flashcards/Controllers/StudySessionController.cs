@@ -35,7 +35,7 @@ public class StudySessionController
             }
             else
             {
-                AnsiConsole.WriteLine($"Incorrect. The answer is {flashcard.Answer}.");
+                AnsiConsole.WriteLine($"Incorrect. The correct answer is {flashcard.Answer}.");
             }
         }
 
