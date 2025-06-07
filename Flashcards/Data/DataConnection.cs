@@ -40,7 +40,7 @@ public class DataConnection
                         IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'Flashcards')
                         CREATE TABLE Flashcards (
                             Id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
-                            Question NVARCHAR(30) NOT NULL,
+                            Question NVARCHAR(70) NOT NULL,
                             Answer NVARCHAR(30) NOT NULL,
                             CategoryId int NOT NULL 
                                 FOREIGN KEY 
@@ -242,7 +242,6 @@ public class DataConnection
                     category.Name as CategoryName,
                     studySession.Date,
                     studySession.Questions,
-                    studySession.CorrectAnswers,
                     studySession.CorrectAnswers,
                     studySession.Percentage,
                     studySession.Time

@@ -10,7 +10,7 @@ public class StudySessionController
     {
         var id = CategoryController.ChooseCategory("Select Category");
         DataConnection dataConnection = new DataConnection();
-        var flashcards = dataConnection.GetAllFlashcards();
+        var flashcards = dataConnection.GetFlashcardByCategory(id);
 
         StudySession studySession = new StudySession();
         studySession.Questions = flashcards.Count();
@@ -38,6 +38,12 @@ public class StudySessionController
                 AnsiConsole.WriteLine($"Incorrect. The answer is {flashcard.Answer}.");
             }
         }
+
+        AnsiConsole.WriteLine($"You got {correctAnswers} out of  {flashcards.Count()} correct!");
+        studySession.CorrectAnswers = correctAnswers;
+        studySession.Time = DateTime.Now - studySession.Date;
+
+        dataConnection.InsertStudySession(studySession);
     }
 
     internal static void ViewStudyHistory()
@@ -54,13 +60,14 @@ public class StudySessionController
 
         foreach (var session in sessions)
         {
-            table.AddRow(session.Date.ToShortDateString(),
+            table.AddRow(
+                session.Date.ToShortDateString(),
                 session.CategoryName,
                 $"{session.CorrectAnswers} out of {session.Questions}",
                 $"{session.Percentage}%",
-                session.Time.ToString()); 
+                session.Time.ToString());
         }
-        
+
         AnsiConsole.Write(table);
     }
 }
